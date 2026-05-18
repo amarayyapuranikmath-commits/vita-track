@@ -1,4 +1,4 @@
-# AFTER (copy-paste this entire file)
+from urllib.parse import urlparse, urlunparse, parse_qsl, urlencode
 from motor.motor_asyncio import AsyncIOMotorClient
 from config import settings
 
@@ -11,7 +11,13 @@ async def connect_db():
     try:
         # Clean connection string from accidental trailing spaces, quotes, or backslashes
         clean_url = settings.MONGODB_URL.strip().strip('"').strip("'").strip('\\').strip()
-        client = AsyncIOMotorClient(clean_url)
+        
+        # Advanced URL parsing to strip trailing ampersands or malformed options
+        parsed_url = urlparse(clean_url)
+        clean_query = urlencode(parse_qsl(parsed_url.query))
+        sanitized_url = urlunparse(parsed_url._replace(query=clean_query))
+        
+        client = AsyncIOMotorClient(sanitized_url)
         db = client[settings.DATABASE_NAME]
         # Verify connection by doing a quick ping
         await client.admin.command('ping')
