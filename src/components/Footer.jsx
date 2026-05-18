@@ -54,14 +54,14 @@ export default function Footer() {
             </div>
 
             {/* Bottom */}
-            <div className="border-t border-gray-800 mt-12 pt-8 flex justify-between">
+            <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
 
                 <p className="text-sm text-gray-400">
                     © {new Date().getFullYear()} VitaTrack
                 </p>
 
                 <p className="flex items-center gap-2 text-sm text-gray-400">
-                    Made with <Heart size={14} /> for healthy lives
+                    Made with <Heart size={14} className="text-red-500 fill-current" /> for healthy lives
                 </p>
 
             </div>

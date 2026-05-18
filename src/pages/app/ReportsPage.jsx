@@ -473,16 +473,7 @@ export default function ReportsPage() {
         // ref={reportRef} — this div is what gets captured as the PDF screenshot
         <div
             ref={reportRef}
-            style={{
-                minHeight: "100vh",
-                background: TOKEN.bg,
-                padding: "40px 32px 80px",
-                fontFamily: "'DM Sans', 'Figtree', sans-serif",
-                color: TOKEN.text,
-                boxSizing: "border-box",
-                maxWidth: 1100,
-                margin: "0 auto",
-            }}
+            className="reports-container"
         >
 
             {/* ── Google Fonts ── */}
@@ -511,6 +502,51 @@ export default function ReportsPage() {
           font-weight: 600;
         }
 
+        .reports-container {
+          min-height: 100vh;
+          background: ${TOKEN.bg};
+          padding: 30px 16px 80px;
+          font-family: 'DM Sans', 'Figtree', sans-serif;
+          color: ${TOKEN.text};
+          box-sizing: border-box;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+        @media (min-width: 640px) {
+          .reports-container {
+            padding: 40px 32px 80px;
+          }
+        }
+
+        .summary-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 18px;
+          margin-bottom: 40px;
+        }
+        @media (min-width: 640px) {
+          .summary-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media (min-width: 1024px) {
+          .summary-grid {
+            grid-template-columns: repeat(4, 1fr);
+          }
+        }
+
+        .chart-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 20px;
+          margin-bottom: 40px;
+        }
+        @media (min-width: 768px) {
+          .chart-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+
         .vita-card {
           background: ${TOKEN.white};
           border-radius: 20px;
@@ -518,6 +554,11 @@ export default function ReportsPage() {
           box-shadow: 0 2px 12px rgba(0,0,0,0.045);
           padding: 28px 26px;
           transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+        @media (max-width: 640px) {
+          .vita-card {
+            padding: 20px 18px;
+          }
         }
         .vita-card:hover {
           box-shadow: 0 8px 32px rgba(0,0,0,0.09);
@@ -618,12 +659,7 @@ export default function ReportsPage() {
                     {/* ─────────────────────────────────── */}
                     {/* SECTION 2 — Summary Cards           */}
                     {/* ─────────────────────────────────── */}
-                    <div className="summary-grid" style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(4, 1fr)",
-                        gap: 18,
-                        marginBottom: 40,
-                    }}>
+                    <div className="summary-grid">
                         {CARDS.map((c) => (
                             <div key={c.label} className="vita-card">
                                 <div style={{
@@ -677,12 +713,7 @@ export default function ReportsPage() {
                     {/* ─────────────────────────────────── */}
                     {/* SECTION 3 — Charts                  */}
                     {/* ─────────────────────────────────── */}
-                    <div className="chart-grid" style={{
-                        display: "grid",
-                        gridTemplateColumns: "1fr 1fr",
-                        gap: 20,
-                        marginBottom: 40,
-                    }}>
+                    <div className="chart-grid">
                         {/* Chart 1 — Health Score Trend */}
                         <div className="vita-card">
                             <div style={{ marginBottom: 24 }}>

@@ -439,7 +439,7 @@ export default function RemindersPage() {
                 <motion.div
                     initial={{ opacity: 0, y: -18 }} animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="flex items-start justify-between mb-10"
+                    className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-10"
                 >
                     <div>
                         <div className="flex items-center gap-2 mb-1">
@@ -467,7 +467,7 @@ export default function RemindersPage() {
                 {/* ── Stats Row ────────────────────────────────────────────── */}
                 <motion.div
                     variants={containerVariants} initial="hidden" animate="show"
-                    className="grid grid-cols-3 gap-4 mb-10"
+                    className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10"
                 >
                     {[
                         {
@@ -501,15 +501,15 @@ export default function RemindersPage() {
                     ))}
                 </motion.div>
 
-                <div className="grid grid-cols-12 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
                     {/* ── Left Column ──────────────────────────────────────── */}
-                    <div className="col-span-8 space-y-8">
+                    <div className="col-span-12 lg:col-span-8 space-y-8">
 
                         {/* Quick Add */}
                         <div>
                             <h2 className="playfair text-xl font-semibold text-[#111827] mb-4">Quick Add</h2>
-                            <motion.div variants={containerVariants} initial="hidden" animate="show" className="grid grid-cols-4 gap-3">
+                            <motion.div variants={containerVariants} initial="hidden" animate="show" className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                                 {CATEGORIES.map(cat => (
                                     <motion.button
                                         key={cat.id}
@@ -666,7 +666,7 @@ export default function RemindersPage() {
                     </div>
 
                     {/* ── Right Column ─────────────────────────────────────── */}
-                    <div className="col-span-4 space-y-5">
+                    <div className="col-span-12 lg:col-span-4 space-y-5">
 
                         {/* Next Reminder Widget */}
                         <motion.div
@@ -882,7 +882,7 @@ export default function RemindersPage() {
                                 {/* Repeat */}
                                 <div className="mb-4">
                                     <label className="block text-xs font-semibold text-[#374151] mb-2 uppercase tracking-wider">Repeat</label>
-                                    <div className="grid grid-cols-5 gap-1.5">
+                                    <div className="grid grid-cols-3 sm:grid-cols-5 gap-1.5">
                                         {REPEAT_OPTIONS.map(opt => (
                                             <button
                                                 key={opt}
